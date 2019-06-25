@@ -1,16 +1,16 @@
 import config.FlywayConfig;
 import org.flywaydb.core.Flyway;
 import org.flywaydb.core.api.FlywayException;
-import tools.FileSystemTools;
+import tools.FileManipulationService;
 
 public class FlywayApplication {
 
-    private static FileSystemTools fileSystemTools = new FileSystemTools();
+    private static FileManipulationService fileManipulationService = new FileManipulationService();
 
     public static void main(String[] args) {
         Flyway flyway = FlywayConfig.getFlyway();
 
-        fileSystemTools.createTempDirectoryWithLinks();
+        fileManipulationService.createTempDirectoryWithLinks();
 
         boolean migrationFininshed = true;
         while (migrationFininshed) {
@@ -23,6 +23,6 @@ public class FlywayApplication {
             }
         }
 
-        fileSystemTools.deleteTempDirectory();
+        fileManipulationService.deleteTempDirectory();
     }
 }

@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 
-public class FileSystemTools {
+public class FileManipulationService {
     private String migrationRootDir = "C:\\Users\\zhanna_fedorova\\IdeaProjects\\test_flyway\\r_sql";
     private String tempDirectoryName = "temp";
 

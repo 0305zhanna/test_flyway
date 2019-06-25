@@ -3,11 +3,11 @@ package callback;
 import org.flywaydb.core.api.callback.Callback;
 import org.flywaydb.core.api.callback.Context;
 import org.flywaydb.core.api.callback.Event;
-import tools.FileSystemTools;
+import tools.FileManipulationService;
 
 public class FlywayCallback implements Callback {
 
-    private FileSystemTools fileSystemTools = new FileSystemTools();
+    private FileManipulationService fileManipulationService = new FileManipulationService();
 
     @Override
     public boolean supports(Event event, Context context) {
@@ -30,7 +30,7 @@ public class FlywayCallback implements Callback {
             }
             case AFTER_EACH_MIGRATE_ERROR: {
                 System.out.println("Handling AFTER_EACH_MIGRATE_ERROR event on..." + desc);
-                fileSystemTools.deleteLink(desc);
+                fileManipulationService.deleteLink(desc);
                 break;
             }
             default:
