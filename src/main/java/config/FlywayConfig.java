@@ -1,6 +1,7 @@
 package config;
 
 import callback.AfterEachMigrationCallback;
+import callback.FlywayCallback;
 import org.flywaydb.core.Flyway;
 
 public class FlywayConfig {
@@ -17,10 +18,10 @@ public class FlywayConfig {
 //                    .callbacks(new AfterEachMigrationCallback())
 //                    .baselineOnMigrate(true)
 //                    .load();
-            flyway.setLocations("filesystem:" + "C:\\Users\\zhanna_fedorova\\IdeaProjects\\test_flyway\\r_sql");
+            flyway.setLocations("filesystem:" + "C:\\Users\\zhanna_fedorova\\IdeaProjects\\test_flyway\\r_sql\\temp");
             flyway.setBaselineOnMigrate(true);
             flyway.setDataSource("jdbc:oracle:thin:@localhost:1521:ORCLCDB", "fp", "qwer");
-            flyway.setCallbacks(new AfterEachMigrationCallback());
+            flyway.setCallbacks(new FlywayCallback());
         }
         return flyway;
     }
